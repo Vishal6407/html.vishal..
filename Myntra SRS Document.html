@@ -1,0 +1,1018 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}</style><style>:root{color-scheme:light dark;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}}:root[data-theme="dark"]{color-scheme:dark;--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}:root[data-theme="light"]{color-scheme:light}@media print{:root,:root[data-theme="dark"]{color-scheme:light;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}}body{background:var(--md-bg);color:var(--md-text);max-width:720px;margin:0 auto;padding:32px;display:flex;flex-direction:column;gap:10px;font:14px/1.55 -apple-system,BlinkMacSystemFont,'SF Pro','Segoe UI',sans-serif;overflow-wrap:break-word}body>:first-child{margin-top:0}h1,h2,h3,h4,h5,h6{margin:6px 0 0;line-height:1.25;font-weight:600;text-wrap:balance}h1{font-size:1.35em}h2{font-size:1.15em;color:var(--md-muted)}h3,h4,h5,h6{font-size:1em}p,ul,ol,blockquote,table,pre,hr{margin:0}strong{font-weight:600}a{color:var(--md-link);text-decoration:none}a:hover{text-decoration:underline}ul,ol{display:flex;flex-direction:column;gap:6px;padding-left:22px}ul{list-style:disc}ol{list-style:decimal}:is(li,td,th)>*+:is(p,ul,ol,blockquote){margin-top:6px}blockquote{display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--md-rule);padding-left:10px;color:var(--md-muted)}:not(pre)>code{background:var(--md-fill);padding:1px 3px;border-radius:4px;font:.92em 'SF Mono',ui-monospace,Menlo,Consolas,monospace}a>code{background:none;color:inherit}pre{background:var(--md-fill);padding:10px 12px;border-radius:6px;overflow-x:auto;font:12px/1.5 'SF Mono',ui-monospace,Menlo,Consolas,monospace;margin-block:4px}pre code{background:none;padding:0;font:inherit}table{width:100%;border-collapse:separate;border-spacing:2px;font:inherit}th,td{padding:6px 8px;border-radius:3px;text-align:left;vertical-align:top}th{background:var(--md-fill-strong);font-weight:600}td{background:var(--md-fill)}:is(th,td) :not(pre)>code{background:transparent}hr{border:0;border-top:1px solid var(--md-rule-strong);margin-block:10px}img{max-width:100%;height:auto;border-radius:4px}</style>
+</head><body>
+<h1>Software Requirements Specification (SRS)</h1>
+<h2>Myntra: Online Fashion &amp; Lifestyle E-Commerce Platform</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Document version</strong></td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td>5 October 2026</td>
+</tr>
+<tr>
+<td><strong>Standard followed</strong></td>
+<td>IEEE 830 / ISO/IEC/IEEE 29148 (adapted)</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Draft, reverse-engineered from publicly visible product behavior</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> This is an academic/illustrative SRS based on Myntra's publicly observable features. It is not an official Myntra or Flipkart document, and internal architecture details are assumptions.</p>
+</blockquote>
+<hr>
+<h2>1. Introduction</h2>
+<h3>1.1 Purpose</h3>
+<p>This document specifies the functional and non-functional requirements of Myntra, an online fashion and lifestyle shopping platform available on web, Android and iOS. It is intended for developers, testers, project managers, UI/UX designers and stakeholders.</p>
+<h3>1.2 Scope</h3>
+<p>Myntra lets customers discover, compare and purchase apparel, footwear, accessories, beauty and home products from a wide range of brands and sellers. The system covers:</p>
+<ul>
+<li>Customer-facing apps (web, Android, iOS)</li>
+<li>Seller/brand portal for catalog and order management</li>
+<li>Admin and operations console</li>
+<li>Payment, logistics, returns and customer-support integrations</li>
+</ul>
+<h3>1.3 Definitions, Acronyms, Abbreviations</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRS</td>
+<td>Software Requirements Specification</td>
+</tr>
+<tr>
+<td>SKU</td>
+<td>Stock Keeping Unit</td>
+</tr>
+<tr>
+<td>PDP / PLP</td>
+<td>Product Detail Page / Product Listing Page</td>
+</tr>
+<tr>
+<td>COD</td>
+<td>Cash on Delivery</td>
+</tr>
+<tr>
+<td>OTP</td>
+<td>One-Time Password</td>
+</tr>
+<tr>
+<td>UPI</td>
+<td>Unified Payments Interface</td>
+</tr>
+<tr>
+<td>RTO</td>
+<td>Return to Origin (undelivered shipment)</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Application Programming Interface</td>
+</tr>
+<tr>
+<td>PCI-DSS</td>
+<td>Payment Card Industry Data Security Standard</td>
+</tr>
+</tbody>
+</table>
+<h3>1.4 References</h3>
+<ul>
+<li>IEEE Std 830-1998, Recommended Practice for SRS</li>
+<li>Myntra public website and mobile apps</li>
+<li>Applicable Indian laws: IT Act 2000, Consumer Protection (E-Commerce) Rules 2020, Digital Personal Data Protection Act 2023</li>
+</ul>
+<h3>1.5 Document Overview</h3>
+<p>Section 2 gives an overall description, Section 3 lists specific requirements, Section 4 covers non-functional requirements, and Section 5 includes models and appendices.</p>
+<hr>
+<h2>2. Overall Description</h2>
+<h3>2.1 Product Perspective</h3>
+<p>Myntra is a marketplace-plus-inventory fashion platform. It integrates with external payment gateways, logistics partners, SMS/email providers, analytics services and the parent ecosystem (Flipkart group services) for shared infrastructure.</p>
+<pre class="mermaid">flowchart LR
+    C[Customer Apps&lt;br/&gt;Web / Android / iOS] --&gt; G[API Gateway]
+    S[Seller Portal] --&gt; G
+    A[Admin Console] --&gt; G
+    G --&gt; U[User Service]
+    G --&gt; CT[Catalog &amp; Search]
+    G --&gt; O[Cart &amp; Order Service]
+    G --&gt; P[Payment Service]
+    G --&gt; I[Inventory Service]
+    G --&gt; R[Returns &amp; Refunds]
+    G --&gt; N[Notification Service]
+    P --&gt; PG[(Payment Gateways)]
+    O --&gt; L[(Logistics Partners)]
+    N --&gt; M[(SMS / Email / Push)]
+</pre>
+<h3>2.2 Product Functions (Summary)</h3>
+<ol>
+<li>User registration, login and profile management</li>
+<li>Product browsing, search, filtering and recommendations</li>
+<li>Wishlist (&quot;Wishlist&quot;) and bag (cart) management</li>
+<li>Checkout, coupons, offers and payments</li>
+<li>Order tracking, cancellation, returns and exchanges</li>
+<li>Ratings, reviews and size guidance</li>
+<li>Loyalty and membership programs (e.g., Myntra Insider)</li>
+<li>Seller catalog, inventory and order fulfillment tools</li>
+<li>Admin controls: campaigns, pricing rules, content, analytics</li>
+<li>Notifications and customer support</li>
+</ol>
+<h3>2.3 User Classes and Characteristics</h3>
+<table>
+<thead>
+<tr>
+<th>User class</th>
+<th>Description</th>
+<th>Technical skill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Guest</td>
+<td>Browses without logging in</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Registered customer</td>
+<td>Buys, tracks orders, manages profile</td>
+<td>Low to medium</td>
+</tr>
+<tr>
+<td>Insider/loyalty member</td>
+<td>Customer with tier benefits</td>
+<td>Low to medium</td>
+</tr>
+<tr>
+<td>Seller / brand manager</td>
+<td>Uploads catalog, manages stock and orders</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Customer support agent</td>
+<td>Handles queries, refunds, escalations</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Admin / merchandiser</td>
+<td>Manages campaigns, pricing, homepage content</td>
+<td>Medium to high</td>
+</tr>
+<tr>
+<td>Logistics partner</td>
+<td>Receives pickup/delivery tasks via integration</td>
+<td>System-level</td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 Operating Environment</h3>
+<ul>
+<li><strong>Web:</strong> Latest versions of Chrome, Safari, Firefox, Edge</li>
+<li><strong>Android:</strong> Android 8.0 and above</li>
+<li><strong>iOS:</strong> iOS 14 and above</li>
+<li><strong>Backend:</strong> Cloud-hosted, containerized microservices</li>
+<li><strong>Network:</strong> Works on 3G or better; progressive loading for low bandwidth</li>
+</ul>
+<h3>2.5 Design and Implementation Constraints</h3>
+<ul>
+<li>Compliance with Indian taxation (GST invoicing), consumer and data-protection laws</li>
+<li>PCI-DSS compliance for card payments; no raw card storage by Myntra</li>
+<li>Support for English and major Indian languages (e.g., Hindi, Tamil)</li>
+<li>Third-party payment and logistics API limits and SLAs</li>
+</ul>
+<h3>2.6 Assumptions and Dependencies</h3>
+<ul>
+<li>Users have internet access and a mobile number or email</li>
+<li>Payment gateways, SMS providers and courier partners are available</li>
+<li>Sellers supply accurate product data and images</li>
+<li>Pincode serviceability data is maintained by logistics partners</li>
+</ul>
+<hr>
+<h2>3. Specific Requirements: Functional</h2>
+<p>Priority key: <strong>H</strong> = High, <strong>M</strong> = Medium, <strong>L</strong> = Low.</p>
+<h3>3.1 User Account Management</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-1.1</td>
+<td>The system shall allow registration using mobile number with OTP verification.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-1.2</td>
+<td>The system shall support login via OTP, email/password, and social sign-in (Google, Apple).</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-1.3</td>
+<td>The system shall let users create, edit and delete saved addresses.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-1.4</td>
+<td>The system shall let users edit profile details (name, gender, date of birth, email).</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-1.5</td>
+<td>The system shall let users manage saved payment methods via tokenization.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-1.6</td>
+<td>The system shall allow users to request account deletion and data export.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-1.7</td>
+<td>The system shall lock an account temporarily after repeated failed login attempts.</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Catalog, Browse and Search</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-2.1</td>
+<td>The system shall display products organized by category (Men, Women, Kids, Home, Beauty, etc.).</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-2.2</td>
+<td>The system shall provide keyword search with auto-suggest and spelling tolerance.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-2.3</td>
+<td>The system shall support filters: brand, price, size, color, discount, rating, fabric, occasion.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-2.4</td>
+<td>The system shall support sorting by popularity, price, newest and discount.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-2.5</td>
+<td>The PDP shall show images, video (if available), price, MRP, discount, sizes, description, delivery estimate by pincode and return policy.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-2.6</td>
+<td>The system shall show size charts and size recommendations.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-2.7</td>
+<td>The system shall offer personalized recommendations and &quot;similar products&quot;.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-2.8</td>
+<td>The system shall support visual/image-based search.</td>
+<td>L</td>
+</tr>
+<tr>
+<td>FR-2.9</td>
+<td>The system shall display ratings and verified-purchase reviews with photos.</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Wishlist and Bag (Cart)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-3.1</td>
+<td>Users shall add products to a wishlist and move them to the bag.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-3.2</td>
+<td>The bag shall allow changing size, quantity and removing items.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-3.3</td>
+<td>The system shall show real-time stock and price changes in the bag.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-3.4</td>
+<td>The bag shall persist across devices for logged-in users.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-3.5</td>
+<td>The system shall notify users of price drops and low-stock items on wishlist products.</td>
+<td>L</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Checkout, Offers and Payment</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-4.1</td>
+<td>The system shall verify pincode serviceability before checkout.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-4.2</td>
+<td>The system shall allow applying coupons, bank offers and loyalty points.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-4.3</td>
+<td>The system shall compute taxes, shipping/convenience fees and the final payable amount transparently.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-4.4</td>
+<td>The system shall support UPI, credit/debit cards, net banking, wallets, EMI and COD (where eligible).</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-4.5</td>
+<td>The system shall redirect to secure gateway pages or in-app SDKs for payment and handle success, failure and pending states.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-4.6</td>
+<td>The system shall prevent duplicate orders on payment retries.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-4.7</td>
+<td>The system shall generate a GST-compliant invoice for every order.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-4.8</td>
+<td>The system shall send an order confirmation via SMS, email and push notification.</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+<h3>3.5 Order Management and Tracking</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-5.1</td>
+<td>Users shall view order history with status (Placed, Packed, Shipped, Out for Delivery, Delivered, Cancelled, Returned).</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-5.2</td>
+<td>The system shall provide live shipment tracking with courier details.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-5.3</td>
+<td>Users shall cancel an order before it is shipped.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-5.4</td>
+<td>The system shall split orders into multiple shipments when items come from different warehouses/sellers.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-5.5</td>
+<td>The system shall support delivery rescheduling and address change before dispatch.</td>
+<td>L</td>
+</tr>
+</tbody>
+</table>
+<h3>3.6 Returns, Exchanges and Refunds</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-6.1</td>
+<td>Users shall initiate return or exchange within the policy window for eligible items.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-6.2</td>
+<td>The system shall schedule reverse pickup and display pickup status.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-6.3</td>
+<td>The system shall record return reason and optional photo evidence.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-6.4</td>
+<td>Upon quality check, the system shall refund to the original payment source, wallet or store credit as chosen/eligible.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-6.5</td>
+<td>The system shall show refund timelines and status to the user.</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+<h3>3.7 Loyalty and Promotions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-7.1</td>
+<td>The system shall maintain loyalty tiers, points earning and redemption.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-7.2</td>
+<td>The system shall support sale events (e.g., end-of-season sales) with time-bound pricing and countdowns.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-7.3</td>
+<td>Admins shall create rule-based coupons (min cart value, category, user segment, usage limit).</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+<h3>3.8 Seller / Brand Portal</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-8.1</td>
+<td>Sellers shall register, complete KYC and accept the marketplace agreement.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-8.2</td>
+<td>Sellers shall upload catalog items individually or in bulk (CSV/API).</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-8.3</td>
+<td>The system shall validate listings against quality and compliance rules before approval.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-8.4</td>
+<td>Sellers shall update inventory and pricing and view sales dashboards.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-8.5</td>
+<td>Sellers shall receive, pack and hand over orders, and print labels/invoices.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-8.6</td>
+<td>The system shall show settlement reports and payout status.</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<h3>3.9 Admin and Operations Console</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-9.1</td>
+<td>Admins shall manage homepage banners, collections and campaigns.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-9.2</td>
+<td>Admins shall manage users, sellers, roles and permissions (RBAC).</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-9.3</td>
+<td>The system shall provide analytics: GMV, conversion, returns rate, top brands, cohort retention.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-9.4</td>
+<td>The system shall log all admin actions in an audit trail.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-9.5</td>
+<td>Support agents shall view order timelines and issue refunds/credits within their limits.</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+<h3>3.10 Notifications and Support</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-10.1</td>
+<td>The system shall send transactional notifications via SMS, email, push and in-app.</td>
+<td>H</td>
+</tr>
+<tr>
+<td>FR-10.2</td>
+<td>Users shall manage notification preferences.</td>
+<td>M</td>
+</tr>
+<tr>
+<td>FR-10.3</td>
+<td>The system shall provide help center, FAQs, chatbot and escalation to human agents.</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>4. Non-Functional Requirements</h2>
+<h3>4.1 Performance</h3>
+<ul>
+<li><strong>NFR-1:</strong> Page load (PLP/PDP) under 2 seconds on 4G for 95% of requests.</li>
+<li><strong>NFR-2:</strong> Search results returned within 500 ms for 95% of queries.</li>
+<li><strong>NFR-3:</strong> API p95 latency under 300 ms for core services (excluding third-party calls).</li>
+<li><strong>NFR-4:</strong> The system shall handle peak sale traffic of at least 10x normal load without degradation (autoscaling, queueing, caching).</li>
+</ul>
+<h3>4.2 Availability and Reliability</h3>
+<ul>
+<li><strong>NFR-5:</strong> 99.9% monthly uptime for customer-facing services; higher targets for payment and order APIs.</li>
+<li><strong>NFR-6:</strong> No loss of confirmed orders; transactions must be atomic or compensating (saga pattern).</li>
+<li><strong>NFR-7:</strong> Graceful degradation: if recommendations fail, browsing and checkout continue.</li>
+<li><strong>NFR-8:</strong> Disaster recovery with RPO ≤ 5 minutes and RTO ≤ 1 hour for core data.</li>
+</ul>
+<h3>4.3 Security</h3>
+<ul>
+<li><strong>NFR-9:</strong> All traffic over TLS 1.2+; data encrypted at rest.</li>
+<li><strong>NFR-10:</strong> Passwords (where used) stored with strong salted hashing; OTPs expire within minutes and are rate-limited.</li>
+<li><strong>NFR-11:</strong> Card data handled only by PCI-DSS compliant gateways; Myntra stores tokens only.</li>
+<li><strong>NFR-12:</strong> Protection against OWASP Top 10 (SQL injection, XSS, CSRF, etc.), bot and scraping abuse, and fraudulent orders.</li>
+<li><strong>NFR-13:</strong> Role-based access control and least-privilege for internal tools.</li>
+</ul>
+<h3>4.4 Privacy and Compliance</h3>
+<ul>
+<li><strong>NFR-14:</strong> Collect and process personal data per the DPDP Act 2023 with explicit consent, purpose limitation and user rights (access, correction, erasure).</li>
+<li><strong>NFR-15:</strong> Maintain GST, invoicing and e-commerce disclosure requirements (country of origin, seller details, return policy).</li>
+</ul>
+<h3>4.5 Usability and Accessibility</h3>
+<ul>
+<li><strong>NFR-16:</strong> Mobile-first, responsive design with consistent navigation.</li>
+<li><strong>NFR-17:</strong> Support for multiple languages and localized currency/format (INR).</li>
+<li><strong>NFR-18:</strong> Meet WCAG 2.1 AA guidelines where practicable (contrast, screen-reader labels, scalable text).</li>
+<li><strong>NFR-19:</strong> A new user shall be able to complete a purchase in under 5 minutes.</li>
+</ul>
+<h3>4.6 Scalability and Maintainability</h3>
+<ul>
+<li><strong>NFR-20:</strong> Horizontally scalable stateless services; independent deployment per microservice.</li>
+<li><strong>NFR-21:</strong> Centralized logging, metrics, tracing and alerting.</li>
+<li><strong>NFR-22:</strong> CI/CD with automated tests; target code coverage of at least 80% for core services.</li>
+<li><strong>NFR-23:</strong> Backward-compatible, versioned APIs.</li>
+</ul>
+<h3>4.7 Portability and Compatibility</h3>
+<ul>
+<li><strong>NFR-24:</strong> Consistent behavior across supported browsers and OS versions; app updates must support at least the last two major versions.</li>
+</ul>
+<hr>
+<h2>5. External Interface Requirements</h2>
+<h3>5.1 User Interfaces</h3>
+<ul>
+<li>Home screen with banners, categories, deals and personalized rows</li>
+<li>Listing pages with filter drawer and infinite scroll</li>
+<li>Product page with image gallery, size selector, &quot;Add to Bag&quot; and &quot;Wishlist&quot; actions</li>
+<li>Bag, address, payment and order-confirmation flow</li>
+<li>Account area: orders, wishlist, addresses, coupons, Insider benefits</li>
+</ul>
+<h3>5.2 Hardware Interfaces</h3>
+<ul>
+<li>Camera access (optional) for image search and return photo upload</li>
+<li>GPS/location (optional) for autofill of pincode</li>
+<li>Push notification services on mobile devices</li>
+</ul>
+<h3>5.3 Software Interfaces</h3>
+<table>
+<thead>
+<tr>
+<th>Integration</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payment gateways / UPI apps</td>
+<td>Payments and refunds</td>
+</tr>
+<tr>
+<td>Logistics partners</td>
+<td>Pickup, delivery, reverse pickup, tracking</td>
+</tr>
+<tr>
+<td>SMS / email / push providers</td>
+<td>Notifications and OTP</td>
+</tr>
+<tr>
+<td>Tax/invoice services</td>
+<td>GST compliance</td>
+</tr>
+<tr>
+<td>Analytics and ad platforms</td>
+<td>Behavior tracking, attribution (with consent)</td>
+</tr>
+<tr>
+<td>Fraud-detection service</td>
+<td>Risk scoring of orders and accounts</td>
+</tr>
+</tbody>
+</table>
+<h3>5.4 Communication Interfaces</h3>
+<ul>
+<li>HTTPS/REST and GraphQL for client-server communication</li>
+<li>Event streaming (e.g., message queues) for inter-service events</li>
+<li>Webhooks for payment and logistics status updates</li>
+</ul>
+<hr>
+<h2>6. System Models</h2>
+<h3>6.1 Use Case Overview</h3>
+<pre class="mermaid">flowchart TB
+    Cust((Customer)) --&gt; UC1[Browse &amp; Search]
+    Cust --&gt; UC2[Manage Wishlist/Bag]
+    Cust --&gt; UC3[Place Order &amp; Pay]
+    Cust --&gt; UC4[Track Order]
+    Cust --&gt; UC5[Return / Exchange]
+    Seller((Seller)) --&gt; UC6[Manage Catalog &amp; Inventory]
+    Seller --&gt; UC7[Fulfil Orders]
+    Admin((Admin)) --&gt; UC8[Manage Campaigns &amp; Pricing]
+    Admin --&gt; UC9[Monitor &amp; Audit]
+    Agent((Support Agent)) --&gt; UC10[Resolve Queries &amp; Refunds]
+</pre>
+<h3>6.2 Order Lifecycle (State Diagram)</h3>
+<pre class="mermaid">stateDiagram-v2
+    [*] --&gt; Placed
+    Placed --&gt; PaymentPending: online payment
+    PaymentPending --&gt; Confirmed: success
+    PaymentPending --&gt; Cancelled: failure/timeout
+    Placed --&gt; Confirmed: COD
+    Confirmed --&gt; Packed
+    Packed --&gt; Shipped
+    Shipped --&gt; OutForDelivery
+    OutForDelivery --&gt; Delivered
+    OutForDelivery --&gt; RTO: undelivered
+    Delivered --&gt; ReturnRequested
+    ReturnRequested --&gt; Returned
+    Returned --&gt; Refunded
+    Confirmed --&gt; Cancelled
+    Packed --&gt; Cancelled
+    Refunded --&gt; [*]
+    Delivered --&gt; [*]
+    Cancelled --&gt; [*]
+</pre>
+<h3>6.3 Checkout Sequence</h3>
+<pre class="mermaid">sequenceDiagram
+    participant U as Customer
+    participant App
+    participant O as Order Service
+    participant I as Inventory
+    participant P as Payment Gateway
+    participant N as Notifications
+    U-&gt;&gt;App: Proceed to checkout
+    App-&gt;&gt;O: Create order (bag, address)
+    O-&gt;&gt;I: Reserve stock
+    I--&gt;&gt;O: Reserved
+    O-&gt;&gt;P: Initiate payment
+    P--&gt;&gt;U: Payment page / UPI intent
+    U-&gt;&gt;P: Authorize
+    P--&gt;&gt;O: Webhook: success
+    O-&gt;&gt;I: Confirm stock
+    O-&gt;&gt;N: Send confirmation
+    N--&gt;&gt;U: SMS / Email / Push
+</pre>
+<hr>
+<h2>7. Data Requirements (Key Entities)</h2>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Key attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User</td>
+<td>user_id, name, mobile, email, gender, DOB, status, consent flags</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>address_id, user_id, line1, line2, city, state, pincode, type</td>
+</tr>
+<tr>
+<td>Product</td>
+<td>product_id, brand, category, title, description, attributes, images</td>
+</tr>
+<tr>
+<td>SKU</td>
+<td>sku_id, product_id, size, color, MRP, selling_price, stock</td>
+</tr>
+<tr>
+<td>Bag / Wishlist</td>
+<td>user_id, sku_id, quantity, added_at</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>order_id, user_id, address_id, total, tax, status, payment_mode</td>
+</tr>
+<tr>
+<td>OrderItem</td>
+<td>order_item_id, order_id, sku_id, seller_id, qty, price, status</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>payment_id, order_id, gateway_ref, amount, status</td>
+</tr>
+<tr>
+<td>Shipment</td>
+<td>shipment_id, order_id, courier, AWB, status, ETA</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>return_id, order_item_id, reason, status, refund_id</td>
+</tr>
+<tr>
+<td>Coupon</td>
+<td>code, rule, validity, usage_limit</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>review_id, user_id, product_id, rating, text, media</td>
+</tr>
+<tr>
+<td>Seller</td>
+<td>seller_id, legal_name, GSTIN, KYC status, bank details</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>8. Acceptance Criteria (Samples)</h2>
+<ol>
+<li><strong>Login:</strong> Given a valid mobile number, when the user enters the correct OTP within the validity period, then the user is logged in and the session is created.</li>
+<li><strong>Pincode check:</strong> Given an unserviceable pincode, when the user tries to checkout, then the system blocks placement and shows an alternative message.</li>
+<li><strong>Payment failure:</strong> Given a failed payment, when the user retries, then no duplicate order is created and stock reservation is handled correctly.</li>
+<li><strong>Return:</strong> Given a delivered item within the return window, when the user raises a return, then a pickup is scheduled and refund status is shown after quality check.</li>
+<li><strong>Seller upload:</strong> Given a bulk CSV with invalid rows, when uploaded, then valid rows are processed and a downloadable error report is generated.</li>
+</ol>
+<hr>
+<h2>9. Risks and Mitigations</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traffic spikes during sale events</td>
+<td>Downtime, lost revenue</td>
+<td>Autoscaling, load testing, caching, queue-based checkout</td>
+</tr>
+<tr>
+<td>Inventory mismatch</td>
+<td>Overselling, cancellations</td>
+<td>Real-time stock sync, reservation with timeouts</td>
+</tr>
+<tr>
+<td>Payment gateway outage</td>
+<td>Failed checkouts</td>
+<td>Multi-gateway routing and fallback</td>
+</tr>
+<tr>
+<td>High return rates</td>
+<td>Cost and logistics burden</td>
+<td>Better size guidance, fit prediction, image quality</td>
+</tr>
+<tr>
+<td>Fraud and fake reviews</td>
+<td>Trust erosion</td>
+<td>Risk scoring, verified-purchase labels, moderation</td>
+</tr>
+<tr>
+<td>Data breach</td>
+<td>Legal and reputation damage</td>
+<td>Encryption, access control, audits, incident response plan</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>10. Future Enhancements</h2>
+<ul>
+<li>Virtual try-on using AR and AI-based fit recommendation</li>
+<li>Voice and conversational shopping assistant</li>
+<li>Live commerce and creator-led storefronts</li>
+<li>Hyper-local fast delivery in select cities</li>
+<li>Sustainable-fashion labels and resale/re-commerce options</li>
+</ul>
+<hr>
+<h2>11. Appendix</h2>
+<h3>11.1 Requirement Traceability (Excerpt)</h3>
+<table>
+<thead>
+<tr>
+<th>Business goal</th>
+<th>Related requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Increase conversion</td>
+<td>FR-2.2, FR-2.3, FR-4.4, NFR-1, NFR-2</td>
+</tr>
+<tr>
+<td>Reduce returns</td>
+<td>FR-2.6, FR-2.9, FR-6.3</td>
+</tr>
+<tr>
+<td>Build trust and security</td>
+<td>FR-1.7, NFR-9 to NFR-14</td>
+</tr>
+<tr>
+<td>Scale seller ecosystem</td>
+<td>FR-8.1 to FR-8.6</td>
+</tr>
+<tr>
+<td>Retain customers</td>
+<td>FR-7.1, FR-3.5, FR-10.1</td>
+</tr>
+</tbody>
+</table>
+<h3>11.2 Revision History</h3>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>05-Oct-2026</td>
+<td>Initial draft</td>
+</tr>
+</tbody>
+</table>
+
+
+<!--claude-mermaid-runtime-begin:3477-->
+<style>.mermaid-diagram{margin-block:4px}.mermaid-diagram svg{display:block;margin:0 auto;max-width:100%;height:auto}</style>
+<script src="/_runtime/mermaid-11.16.1.min.js"></script>
+<script>(function(){
+var CFG={"palettes":{"light":{"surface":"#f4efe4","text":"#42392e","line":"#8a7f6d","border":"#7a6c52","bg":"#fffdf8"},"dark":{"surface":"#262b34","text":"#f2f3f5","line":"#a8adb8","border":"#9aa4b8","bg":"#1f232b"}}};
+if(typeof mermaid==='undefined')return;
+var pres=Array.prototype.slice.call(document.querySelectorAll('pre.mermaid')).filter(function(p){if(p.hasAttribute('data-claude-mermaid-claimed'))return false;p.setAttribute('data-claude-mermaid-claimed','1');return true;});
+if(!pres.length)return;
+var mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+var root=document.documentElement;
+var items=pres.map(function(pre){
+var mount=document.createElement('div');mount.className='mermaid-diagram';
+return {pre:pre,mount:mount,src:pre.textContent||''};
+});
+var seq=0;
+var renderGen=0;
+var lastKey='';
+function pageBg(fallback){
+var els=[document.body,document.documentElement];
+for(var i=0;i<els.length;i++){
+var c=els[i]&&getComputedStyle(els[i]).backgroundColor;
+if(c&&c!=='transparent'&&c!=='rgba(0, 0, 0, 0)')return c;
+}
+return fallback;
+}
+function render(){
+var theme=root.getAttribute('data-theme');
+var dark=theme==='dark'||(!!(mq&&mq.matches)&&theme!=='light');
+var pal=dark?CFG.palettes.dark:CFG.palettes.light;
+var bg=pageBg(pal.bg);
+var key=(dark?'d':'l')+'|'+bg;
+if(key===lastKey)return;
+lastKey=key;
+var gen=++renderGen;
+var font=getComputedStyle(document.body).fontFamily||'sans-serif';
+var nat={useMaxWidth:false};
+mermaid.initialize({
+startOnLoad:false,securityLevel:'strict',theme:'base',
+flowchart:nat,sequence:nat,er:nat,state:nat,class:nat,pie:nat,
+gantt:nat,journey:nat,timeline:nat,gitGraph:nat,mindmap:nat,xyChart:nat,
+quadrantChart:nat,sankey:nat,c4:nat,requirement:nat,block:nat,
+packet:nat,kanban:nat,architecture:nat,radar:nat,
+themeVariables:{background:bg,mainBkg:pal.surface,primaryColor:pal.surface,
+primaryTextColor:pal.text,lineColor:pal.line,primaryBorderColor:pal.border,
+nodeBorder:pal.border,clusterBorder:pal.border,edgeLabelBackground:bg,
+clusterBkg:'rgba(127,127,127,0.07)',titleColor:pal.text,
+darkMode:dark,rowOdd:bg,rowEven:'rgba(127,127,127,0.07)',
+attributeBackgroundColorOdd:bg,attributeBackgroundColorEven:'rgba(127,127,127,0.07)',
+fontSize:'16px',fontFamily:font},
+themeCSS:'.node rect, .node circle, .node polygon, .node path, .cluster rect { stroke-width: 2px; }'
+});
+items.forEach(function(it){
+var id='claude-mermaid-'+seq++;
+mermaid.render(id,it.src).then(function(r){
+if(gen!==renderGen)return;
+var prev=it.pre.previousElementSibling;
+if(prev&&prev.className==='mermaid-diagram'&&prev!==it.mount)return;
+it.mount.innerHTML=r.svg;
+if(!it.mount.parentNode)it.pre.parentNode.insertBefore(it.mount,it.pre);
+it.pre.style.display='none';
+},function(){
+var scratch=document.getElementById(id);
+if(scratch)scratch.parentNode.removeChild(scratch);
+scratch=document.getElementById('d'+id);
+if(scratch)scratch.parentNode.removeChild(scratch);
+if(gen!==renderGen)return;
+if(it.mount.parentNode)it.mount.parentNode.removeChild(it.mount);
+it.pre.style.display='';
+});
+});
+}
+render();
+if(mq&&mq.addEventListener)mq.addEventListener('change',render);
+if(typeof MutationObserver!=='undefined')new MutationObserver(render).observe(root,{attributes:true,attributeFilter:['data-theme']});
+})();</script>
+<!--claude-mermaid-runtime-end-->
+</body></html>
